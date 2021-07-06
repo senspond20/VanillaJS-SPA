@@ -1,5 +1,20 @@
 # Vanilla JS - SPA
 
+
+## install
+```
+npm install
+```
+## start
+```
+npm run start
+```
+## build
+```
+npm run build
+```
+
+### Package.json
 ```json
   "scripts": {
     "start": "webpack-dev-server",
