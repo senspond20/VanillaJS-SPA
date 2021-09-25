@@ -1,6 +1,6 @@
 // template
-const homeTemplate = require('./pages/home.hbs')
-const aboutTemplate = require('./pages/about.hbs')
+const homeTemplate = require('../../views/home.hbs')
+const aboutTemplate = require('../../views/about.hbs')
 
 const Home = homeTemplate()
 const About = aboutTemplate()
@@ -16,11 +16,12 @@ function initialRoutes (mode, el) {
   renderHTML(el, routes['/'])
 
   if (mode === 'history') {
+    console.log('history')
     window.onpopstate = () => renderHTML(el, routes[window.location.pathname])
   } else {
-    window.addEventListener('hashchange', () => {
-      return renderHTML(el, getHashRoute())
-    })
+    // window.addEventListener('hashchange', () => {
+    //   return renderHTML(el, getHashRoute())
+    // })
   }
 }
 
@@ -31,22 +32,22 @@ function historyRouterPush (pathName, el) {
 }
 
 // get hash history route
-function getHashRoute () {
-  let route = '/'
-
-  Object.keys(routes).forEach(hashRoute => {
-    if (window.location.hash.replace('#', '') === hashRoute.replace('/', '')) {
-      route = routes[hashRoute]
-    }
-  })
-
-  return route
-}
+// function getHashRoute () {
+//   let route = '/'
+//
+//   Object.keys(routes).forEach(hashRoute => {
+//     if (window.location.hash.replace('#', '') === hashRoute.replace('/', '')) {
+//       route = routes[hashRoute]
+//     }
+//   })
+//
+//   return route
+// }
 
 // set hash history
-function hashRouterPush (pathName, el) {
-  renderHTML(el, getHashRoute())
-}
+// function hashRouterPush (pathName, el) {
+//   renderHTML(el, getHashRoute())
+// }
 
 // render
 function renderHTML (el, route) {
@@ -56,5 +57,5 @@ function renderHTML (el, route) {
 module.exports = {
   initialRoutes,
   historyRouterPush,
-  hashRouterPush
+  // hashRouterPush
 }

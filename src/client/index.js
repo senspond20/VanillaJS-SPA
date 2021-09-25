@@ -1,27 +1,28 @@
 // css
-require('./css/style.css')
+require('../../public/css/style.css')
 
 // router
 const {
   initialRoutes,
   historyRouterPush,
-  hashRouterPush
+  // hashRouterPush
 } = require('./router')
 
 // app division
 const historyAppDiv = document.querySelector('#history-app')
-const hashAppDiv = document.querySelector('#hash-app')
+// const hashAppDiv = document.querySelector('#hash-app')
 
 // Browser History
 initialRoutes('history', historyAppDiv)
 
 // Hash History
-initialRoutes('hash', hashAppDiv)
+// initialRoutes('hash', hashAppDiv)
 
 window.onload = () => {
   const historyLinker = document.querySelectorAll('span.history')
-  const hashLinker = document.querySelectorAll('a.hash')
+  // const hashLinker = document.querySelectorAll('a.hash')
 
+  console.log(historyLinker)
   historyLinker.forEach(el => {
     el.addEventListener('click', (evt) => {
       const pathName = evt.target.getAttribute('route')
@@ -30,11 +31,11 @@ window.onload = () => {
     })
   })
 
-  hashLinker.forEach(el => {
-    el.addEventListener('click', (evt) => {
-      const pathName = evt.target.getAttribute('route')
-
-      hashRouterPush(pathName, hashAppDiv)
-    })
-  })
+  // hashLinker.forEach(el => {
+  //   el.addEventListener('click', (evt) => {
+  //     const pathName = evt.target.getAttribute('route')
+  //
+  //     hashRouterPush(pathName, hashAppDiv)
+  //   })
+  // })
 }
