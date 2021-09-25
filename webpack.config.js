@@ -19,9 +19,10 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       filename: resolve(__dirname, 'public','index.html'),
-      template: resolve(__dirname, 'src','client','root.html')
+      template: resolve(__dirname, 'src','client','root.html'),
+      // template: resolve(__dirname, 'views','layouts','layout.hbs')
     }),
-    new MiniCssExtractPlugin({ filename: 'app.css' }),
+    new MiniCssExtractPlugin({ filename: 'app.bundle.css' }),
     new CleanWebpackPlugin({
       cleanAfterEveryBuildPatterns: ['public']
     })

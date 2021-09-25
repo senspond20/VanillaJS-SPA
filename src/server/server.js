@@ -13,7 +13,7 @@ const PORT = 5000;
 // const compiler = webpack(webpackConfig);
 
 app.engine('hbs', hbs({
-    extname: 'html',
+    extname: 'hbs',
     defaultLayout: 'layout',
     layoutsDir: 'views/layouts/',
 }));
@@ -26,15 +26,12 @@ app.set('view engine', 'hbs');
 app.use(express.static(path.resolve(__dirname, "..","..","public")))
 
 app.get("/",(req,res)=>{
-    // console.log(path.join(dist,"root.html"))
-    // const file = fs.readFileSync(path.join(dist,"root.html"))
-    // console.log(file)
-    // res.send(file)
-    // res.end();
-    res.render("home")
-    // res.sendFile("index.html")
-    // res.sendFile((path.resolve(__dirname, "..","..","public","index.html")));
-    // res.sendFile(path.join(dist,"root.html"))
+
+    /* start Home with SSR */
+      // res.render("home")    // ->
+
+    /* start Home with SPA */
+    res.sendFile("index.html")
 })
 
 app.get("/home",(req,res)=>{

@@ -17,6 +17,7 @@ function initialRoutes (mode, el) {
 
   if (mode === 'history') {
     console.log('history')
+    console.log(window.location.pathname)
     window.onpopstate = () => renderHTML(el, routes[window.location.pathname])
   } else {
     // window.addEventListener('hashchange', () => {
