@@ -1,11 +1,21 @@
 const express = require('express');
-const path = require('path');
+// const path = require('path');
 const app = express();
 const PORT = 5000;
-const fs = require('fs')
-const dist = path.resolve(__dirname, "dist")
+// const fs = require('fs')
+// const dist = path.resolve(__dirname, "dist")
 
-app.use(express.static(path.resolve(__dirname, "dist")))
+const webpackDevMiddleware = require('webpack-dev-middleware');
+const webpack = require('webpack');
+const webpackConfig = require('./webpack.config.js');
+const compiler = webpack(webpackConfig);
+
+// webpack 미들웨어 추가
+app.use(webpackDevMiddleware(compiler,{
+	publicPath: webpackConfig.output.publicPath,
+}))
+
+// app.use(express.static(path.resolve(__dirname, "dist")))
 
 app.get("/",(req,res)=>{
     // console.log(path.join(dist,"index.html"))
@@ -14,7 +24,8 @@ app.get("/",(req,res)=>{
     // res.send(file)
     // res.end();
 
-    res.sendFile(path.join(dist,"index.html"))
+    res.sendFile("index.html")
+    // res.sendFile(path.join(dist,"index.html"))
 })
 app.get("/about",(req,res)=>{
     res.send("hello")
