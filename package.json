@@ -28,5 +28,8 @@
   "bugs": {
     "url": "https://github.com/senspond20/VanillaJS-SPA/issues"
   },
-  "homepage": "https://github.com/senspond20/VanillaJS-SPA#readme"
+  "homepage": "https://github.com/senspond20/VanillaJS-SPA#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
